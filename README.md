@@ -15,4 +15,4 @@ mcedit z1.sh
 ```
 #!/bin/bash
 ```
-#Variables (zmienne)
+# Variables (zmienne)
