@@ -29,9 +29,15 @@ done
 #loop while
 j=1
 
-while [ ${j} -le 100 ]; do
-    echo -e "\0227"
-    j$[i+1]
+while [ ${j} -le 50 ]; do
+    echo -ne "\0227"
+    j=$[j+1]
 done
 
+#rysuje symbole
+j=1
+while [ ${j} -le 20 ]; do
+    echo -e "\0227"
+    j=$[j+1]
+done
 
