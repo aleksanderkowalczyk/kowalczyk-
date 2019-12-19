@@ -21,3 +21,14 @@ do
 	*) echo "Podaj liczby z zakresu [1...3] " ;;
     esac
 done
+
+
+
+
+
+
+
+
+
+
+
