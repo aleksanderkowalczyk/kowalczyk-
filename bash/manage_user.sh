@@ -15,15 +15,27 @@ function showUser() {
 
 function addUsers() {
     echo "AddUsers ..."
+    if "${sure}" == "y"]
     for user in "${user_list[@]}"
-    do
-	echo ${user}
-    done
+	    echo "Add user: ${user} [OK]"
+	    sudo useradd ${user} -s /sbin/nologin -g "users"
+	done
+    fi
 }
 
 
 function delUsers() {
     echo "DelUsers ..."
+    echo -n "Are you sure? [y/n]"
+    read sure
+    if [ ${sure} == "y"]; then
+	for user in  "${user_list[@]}"
+	do
+	    echo  "Remove user ${user} [OK]"
+	    sudo userdel ${user}
+	done
+    fi
+
 }
 
 
