@@ -4,14 +4,16 @@
 #zmienna globalna
 user_list=(`cat users.txt`)
 status="FAIL"
-RED='\033
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\e[0m'
 #ładowanie danych z pliku
 
 function checkStatusCode() {
     if [ $? == 0 ]; then
-	status="PASS"
+	status="${GREEN} [PASS]${NC}"
     else
-	status="FAIL"
+	status="${RED} [FAIL]${NC}"
     fi
 }
 
@@ -34,7 +36,8 @@ function addUsers() {
 	do
 	    sudo useradd ${user} -m -s /sbin/nologin -g "users" 2> /dev/null
 	    checkStatusCode
-	    echo "Add user: ${user} [${status}]"
+	    #echo "Add user: ${user} [${status}]"
+	    printf "Add user %10b %20b\n" "${user}" "[${status}]"
 	done
     fi
 }
@@ -49,9 +52,10 @@ function delUsers() {
 	do
 	    sudo userdel -r ${user} 2> /dev/null
 	    checkStatusCode
-	    echo  "Remove user ${user} [${status}]"
+	    #echo  "Remove user ${user} [${status}]"
+	    printf "Remove user %10b %20b\n" "${user}" "[${status}]"
 	done
-    fi
+    fi	
 
 }
 
@@ -62,7 +66,8 @@ function acceptRemoteLogin() {
 	do
 	    sudo usermod -s /bin/bash ${user} 2> /dev/null
 	    checkStatusCode
-	    echo  "Accept remote login for ${user} [${status}]"
+	    #echo  "Accept remote login for ${user} [${status}]"
+	    printf "Accept remote login for %10b %20b\n" "${user}" "[${status}]"
 	done
 }
 
@@ -73,7 +78,8 @@ function deniedRemoteLogin() {
 	do
 	    sudo usermod -s /sbin/noLogin ${user} 2> /dev/null
 	    checkStatusCode
-	    echo  "Denied remote login for ${user} [${status}]"
+	    #echo  "Denied remote login for ${user} [${status}]"
+	    printf "Denied remote login for %10b %20b\n" "${user}" "[${status}]"
 	done
 }
 

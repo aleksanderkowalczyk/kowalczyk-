@@ -16,4 +16,6 @@ do
 	"f2") echo "f2" ;;
 	"f3") echo "f3" ;;
 	"Quit") echo exit 0 ;;
+	*) echo "Podaj opcje z menu"
+    esac
 done
